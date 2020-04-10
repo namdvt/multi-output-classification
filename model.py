@@ -15,24 +15,6 @@ class Conv2d(nn.Module):
         x = self.relu(x)
         return x
 
-    
-class Linear(nn.Module):
-    def __init__(self, in_channels, out_channels, bias=True):
-        super(Linear, self).__init__()
-        self.linear = nn.Linear(in_channels, out_channels, bias=bias)
-        nn.init.kaiming_normal_(self.linear.weight, mode='fan_in')
-        self.bn = nn.BatchNorm1d(out_channels)
-        self.relu = nn.ReLU(inplace=True)
-        self.dropout = nn.Dropout(0.5)
-
-    def forward(self, x):
-        x = self.linear(x)
-        if x.shape[0] != 1:
-            x = self.bn(x)
-        x = self.relu(x)
-        x = self.dropout(x)
-        return x
-    
 
 class Stem(nn.Module):
     def __init__(self, in_channels):

@@ -1,18 +1,12 @@
 import torch
 import torch.optim as optim
-import torch.utils.data as utils
 from helper import write_log, write_figures
 import numpy as np
 import torch.nn as nn
-from dataset import ApparelImagesDataset, get_loader
+from dataset import get_loader
 
-# from acousticmodel_ver2_1 import AcousticModel
 from model import Model
 from tqdm import tqdm
-from torchvision import transforms
-import matplotlib.pyplot as plt
-from torch.utils.data import random_split
-from torch.utils.data import DataLoader
 
 
 def fit(epoch, model, optimizer, criterion, device, data_loader, phase='training'):
@@ -92,8 +86,6 @@ def train(root, device, model, epochs, bs, lr):
 if __name__ == "__main__":
     device = torch.device("cuda:1" if (torch.cuda.is_available()) else "cpu")
     model = Model().to(device)
-#     model.load_state_dict(torch.load('output/weight.pth', map_location=device))
-
     batch_size = 32
     num_epochs = 200
     learning_rate = 0.1

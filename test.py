@@ -42,4 +42,4 @@ def predict(file):
     
     
 if __name__ == '__main__':
-    predict('images/quan_nau.jpg')
+    predict('test_images/giay_trang.jpg')
